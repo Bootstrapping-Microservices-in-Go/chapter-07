@@ -1,5 +1,9 @@
-resource "null_resource" "container_registry" {
+resource "null_resource" "enable_registry" {
   provisioner "local-exec" {
-    command = "minikube image load video-streaming:1"
+    command = "minikube addons enable registry"
+
+    environment = {
+      MINIKUBE_PROFILE = "flixtube"
+    }
   }
 }
